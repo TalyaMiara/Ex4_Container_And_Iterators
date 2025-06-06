@@ -125,31 +125,131 @@ namespace Container{
          * @brief Forward declaration of iterator classes for different orders.
          * 
          */
-        class AscendingOrder;
-        class DescendingOrder;
-        class SideCrossOrder;
-        class ReverseOrder;
-        class Order;
-        class MiddleOutOrder;
+        friend class AscendingOrder;
+        friend class DescendingOrder;
+        friend class SideCrossOrder;
+        friend class ReverseOrder;
+        friend class Order;
+        friend class MiddleOutOrder;
 
         // begin/end for each iterator
-        AscendingOrder begin_ascending_order() const;
-        AscendingOrder end_ascending_order() const;
-
-        DescendingOrder begin_descending_order() const;
-        DescendingOrder end_descending_order() const;
-
-        SideCrossOrder begin_side_cross_order() const;
-        SideCrossOrder end_side_cross_order() const;
-
-        ReverseOrder begin_reverse_order() const;
-        ReverseOrder end_reverse_order() const;
-
-        Order begin_order() const;
-        Order end_order() const;
+        /**
+         * @brief Returns iterators for different orders of the container.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for ascending, descending, side cross, reverse, order, and middle out orders.
+         */
 
         MiddleOutOrder begin_middle_out_order() const;
         MiddleOutOrder end_middle_out_order() const;
+
+        // Iterator accessors
+
+        /**
+         * @brief Returns iterators for ascending, descending, side cross, reverse, order, and middle out orders.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for ascending, descending, side cross, reverse, order, and middle out orders.
+         */
+        AscendingOrder begin_ascending_order() const {
+            return AscendingOrder(*this, 0);
+        }
+        /**
+         * @brief Returns an iterator for the end of the ascending order.
+         * This iterator points to one past the last element in ascending order.
+         * @return An iterator for the end of the ascending order.
+         */
+        AscendingOrder end_ascending_order() const {
+            return AscendingOrder(*this, data.size());
+        }
+
+        /**
+         * @brief Returns iterators for descending, side cross, reverse, order, and middle out orders.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for descending, side cross, reverse, order, and middle out orders.
+         */
+        DescendingOrder begin_descending_order() const {
+            return DescendingOrder(*this, 0);
+        }
+
+        /**
+         * @brief Returns an iterator for the end of the descending order.
+         * This iterator points to one past the last element in descending order.
+         * @return An iterator for the end of the descending order.
+         */
+        DescendingOrder end_descending_order() const {
+            return DescendingOrder(*this, data.size());
+        }
+
+        /**
+         * @brief Returns iterators for side cross, reverse, order, and middle out orders.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for side cross, reverse, order, and middle out orders.
+         */
+        SideCrossOrder begin_side_cross_order() const {
+            return SideCrossOrder(*this, 0);
+        }
+
+        /**
+         * @brief Returns an iterator for the end of the side cross order.
+         * This iterator points to one past the last element in side cross order.
+         * @return An iterator for the end of the side cross order.
+         */
+        SideCrossOrder end_side_cross_order() const {
+            return SideCrossOrder(*this, data.size());
+        }
+
+        /**
+         * @brief Returns iterators for reverse, order, and middle out orders.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for reverse, order, and middle out orders.
+         */
+        ReverseOrder begin_reverse_order() const {
+            return ReverseOrder(*this, 0);
+        }
+
+        /**
+         * @brief Returns an iterator for the end of the reverse order.
+         * This iterator points to one past the last element in reverse order.
+         * @return An iterator for the end of the reverse order.
+         */
+        ReverseOrder end_reverse_order() const {
+            return ReverseOrder(*this, data.size());
+        }
+
+        /**
+         * @brief Returns iterators for order and middle out orders.
+         * These iterators allow traversing the container in various orders.
+         * @return Iterators for order and middle out orders.
+         */
+        Order begin_order() const {
+            return Order(*this, 0);
+        }
+
+        /**
+         * @brief Returns an iterator for the end of the order.
+         * This iterator points to one past the last element in order.
+         * @return An iterator for the end of the order.
+         */
+        Order end_order() const {
+            return Order(*this, data.size());
+        }
+
+        /**
+         * @brief Returns iterators for middle out order.
+         * These iterators allow traversing the container in middle out order.
+         * @return Iterators for middle out order.
+         */
+        MiddleOutOrder begin_middle_out_order() const {
+            return MiddleOutOrder(*this, 0);
+        }
+
+    /**
+     * @brief Returns an iterator for the end of the middle out order.
+     * This iterator points to one past the last element in middle out order.
+     * @return An iterator for the end of the middle out order.
+     */
+        MiddleOutOrder end_middle_out_order() const {
+            return MiddleOutOrder(*this, data.size());
+        }
     };
 
 
