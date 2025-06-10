@@ -6,7 +6,6 @@ using namespace Container;
 using std::vector;
 using std::string;
 
-
 TEST_CASE("Ascending Order") {
     // git hub example
     SUBCASE("git hub example") {
@@ -495,5 +494,3 @@ TEST_CASE("Side Cross Order") {
     }
 
 }
-
-

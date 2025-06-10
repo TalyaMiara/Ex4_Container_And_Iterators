@@ -4,7 +4,7 @@ CXXFLAGS := -std=c++17 -Wall -Wextra -pedantic
 
 # Source and binary for the demo
 MAIN_SRC := Demo.cpp
-MAIN_EXE := demo
+MAIN_EXE := Demo
 
 # Test source and executable
 TEST_SRC := test.cpp
