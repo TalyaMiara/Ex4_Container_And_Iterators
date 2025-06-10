@@ -1,7 +1,7 @@
 # Container and Iterators Project (Assignment 4)
 
 **Email:** taliyam123@gmail.com  
-**Default Template Type:** `int` (supports any comparable type)
+**Default Template Type:** `int` (supports any comparable type as- double, string..)
 
 
 ---
@@ -54,9 +54,9 @@ Explain of each operator:
 
 The file `test.cpp` covers:
 
-- Empty containers: `size`, `remove`, `operator<<`, and iterator behavior.
+- Empty containers: `size`, `remove`, `operator<<`
 - Valid and invalid `remove()`.
-- All iterator traversal patterns (including single, even, odd, duplicates).
+- Check the Iterator's behavior. All iterator traversal patterns (including single, even, odd, duplicates).
 - `operator==`, `operator!=`, exception cases.
 - Valgrind tested for memory leaks.
 
@@ -78,10 +78,10 @@ The file `test.cpp` covers:
 
 ## Makefile Targets
 
-- `make Main` – Build and run the demo program.
-- `make test` – Build and run unit tests (requires `doctest.h`).
-- `make valgrind` – Check for memory leaks on the Demo and the Tests.
-- `make clean` – Remove generated binaries.
+- Run `Demo` – Build and run the demo program by-   `./Demo`.
+- Run `test` – Build and run unit tests (requires `doctest.h`), by- `make test` .
+- Run `valgrind` – Check for memory leaks on the Demo and the Tests,  by `make valgrind` .
+- Run `clean` – Remove generated binaries, by- ` make clean`
 
 
 ## License & Academic Integrity
