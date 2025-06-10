@@ -23,23 +23,23 @@ namespace Container{
      * This class allows adding elements, removing elements, and iterating over them in different orders.
      * It supports copy construction and assignment, and provides an output operator for easy printing.
      */
-    class Container {
+    class MyContainer {
     private:
         std::vector<T> elements; // Vector to hold elements of type T
 
     public:
         
         /**
-         * @brief Default constructor for the Container class.
+         * @brief Default constructor for the MyContainer  class.
          * Initializes an empty container.
          * Default constructor
          */
-        Container() = default;
+        MyContainer () = default;
 
          /**
          * @brief Default destructor.
          */
-        ~MyContainer()= default;
+        ~MyContainer ()= default;
 
         // /**
         //  * @brief Copy constructor for the Container class.
@@ -99,7 +99,7 @@ namespace Container{
          * @param container The container to print.
          * @return The output stream after printing the container.
          */
-        friend std::ostream& operator<<(std::ostream& stream, const Container<T>& container) {
+        friend std::ostream& operator<<(std::ostream& stream, const MyContainer<T>& container) {
             stream << "[";
             for (size_t i = 0; i < container.elements.size(); ++i) {
                 stream << container.elements[i];
@@ -123,24 +123,15 @@ namespace Container{
         
         /**
          * @brief Forward declaration of iterator classes for different orders.
+         * will be able to use all private class memebers
          * 
          */
-        friend class AscendingOrder;
-        friend class DescendingOrder;
-        friend class SideCrossOrder;
-        friend class ReverseOrder;
-        friend class Order;
-        friend class MiddleOutOrder;
-
-        // begin/end for each iterator
-        /**
-         * @brief Returns iterators for different orders of the container.
-         * These iterators allow traversing the container in various orders.
-         * @return Iterators for ascending, descending, side cross, reverse, order, and middle out orders.
-         */
-
-        MiddleOutOrder begin_middle_out_order() const;
-        MiddleOutOrder end_middle_out_order() const;
+        template<typename U>  friend class AscendingOrder;
+        template<typename U> friend class DescendingOrder;
+        template<typename U> friend class SideCrossOrder;
+        template<typename U> friend class ReverseOrder;
+        template<typename U> friend class Order;
+        template<typename U> friend class MiddleOutOrder;
 
         // Iterator accessors
 
@@ -149,7 +140,7 @@ namespace Container{
          * These iterators allow traversing the container in various orders.
          * @return Iterators for ascending, descending, side cross, reverse, order, and middle out orders.
          */
-        AscendingOrder begin_ascending_order() const {
+        AscendingOrder<T> begin_ascending_order() const {
             return AscendingOrder(*this, 0);
         }
         /**
@@ -157,8 +148,8 @@ namespace Container{
          * This iterator points to one past the last element in ascending order.
          * @return An iterator for the end of the ascending order.
          */
-        AscendingOrder end_ascending_order() const {
-            return AscendingOrder(*this, data.size());
+        AscendingOrder<T> end_ascending_order() const {
+            return AscendingOrder(*this, elements.size());
         }
 
         /**
@@ -166,7 +157,7 @@ namespace Container{
          * These iterators allow traversing the container in various orders.
          * @return Iterators for descending, side cross, reverse, order, and middle out orders.
          */
-        DescendingOrder begin_descending_order() const {
+        DescendingOrder<T> begin_descending_order() const {
             return DescendingOrder(*this, 0);
         }
 
@@ -175,8 +166,8 @@ namespace Container{
          * This iterator points to one past the last element in descending order.
          * @return An iterator for the end of the descending order.
          */
-        DescendingOrder end_descending_order() const {
-            return DescendingOrder(*this, data.size());
+        DescendingOrder<T> end_descending_order() const {
+            return DescendingOrder(*this, elements.size());
         }
 
         /**
@@ -184,7 +175,7 @@ namespace Container{
          * These iterators allow traversing the container in various orders.
          * @return Iterators for side cross, reverse, order, and middle out orders.
          */
-        SideCrossOrder begin_side_cross_order() const {
+        SideCrossOrder<T> begin_side_cross_order() const {
             return SideCrossOrder(*this, 0);
         }
 
@@ -193,8 +184,8 @@ namespace Container{
          * This iterator points to one past the last element in side cross order.
          * @return An iterator for the end of the side cross order.
          */
-        SideCrossOrder end_side_cross_order() const {
-            return SideCrossOrder(*this, data.size());
+        SideCrossOrder<T> end_side_cross_order() const {
+            return SideCrossOrder(*this, elements.size());
         }
 
         /**
@@ -202,7 +193,7 @@ namespace Container{
          * These iterators allow traversing the container in various orders.
          * @return Iterators for reverse, order, and middle out orders.
          */
-        ReverseOrder begin_reverse_order() const {
+        ReverseOrder<T> begin_reverse_order() const {
             return ReverseOrder(*this, 0);
         }
 
@@ -211,8 +202,8 @@ namespace Container{
          * This iterator points to one past the last element in reverse order.
          * @return An iterator for the end of the reverse order.
          */
-        ReverseOrder end_reverse_order() const {
-            return ReverseOrder(*this, data.size());
+        ReverseOrder<T> end_reverse_order() const {
+            return ReverseOrder(*this, elements.size());
         }
 
         /**
@@ -220,7 +211,7 @@ namespace Container{
          * These iterators allow traversing the container in various orders.
          * @return Iterators for order and middle out orders.
          */
-        Order begin_order() const {
+        Order<T> begin_order() const {
             return Order(*this, 0);
         }
 
@@ -229,8 +220,8 @@ namespace Container{
          * This iterator points to one past the last element in order.
          * @return An iterator for the end of the order.
          */
-        Order end_order() const {
-            return Order(*this, data.size());
+        Order<T> end_order() const {
+            return Order(*this, elements.size());
         }
 
         /**
@@ -238,7 +229,7 @@ namespace Container{
          * These iterators allow traversing the container in middle out order.
          * @return Iterators for middle out order.
          */
-        MiddleOutOrder begin_middle_out_order() const {
+        MiddleOutOrder<T> begin_middle_out_order() const {
             return MiddleOutOrder(*this, 0);
         }
 
@@ -247,8 +238,8 @@ namespace Container{
      * This iterator points to one past the last element in middle out order.
      * @return An iterator for the end of the middle out order.
      */
-        MiddleOutOrder end_middle_out_order() const {
-            return MiddleOutOrder(*this, data.size());
+        MiddleOutOrder<T> end_middle_out_order() const {
+            return MiddleOutOrder(*this, elements.size());
         }
     };
 

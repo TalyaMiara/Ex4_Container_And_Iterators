@@ -69,8 +69,7 @@ The file `test.cpp` covers:
 - SideCrossOrder.hpp  
 - ReverseOrder.hpp  
 - MiddleOutOrder.hpp  
-- Demo.cpp  
-- main.cpp  
+- Demo.cpp   
 - test.cpp  
 - doctest.h  
 - makefile  
